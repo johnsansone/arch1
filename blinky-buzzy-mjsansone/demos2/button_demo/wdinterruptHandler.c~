@@ -1,0 +1,27 @@
+#include <msp430.h>
+
+#include "stateMachines.h"
+short num = 0;
+#include "led.h"
+void __interrupt_vec(WDT_VECTOR) WDT(){/* 250 interrupts/sec */
+
+  static char blink_count = 0;
+  if(enablelow == 0){
+      break;
+    }
+  else{
+    if(num ==0)
+      {
+        num+=1;
+	led_update(4);
+      }
+    else
+      {
+        led_update(3);
+      }
+    }
+
+
+  led_update();
+
+}
